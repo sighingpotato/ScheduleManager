@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-@Table(name = "comment")
 public class Comment extends Timestamped{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +23,6 @@ public class Comment extends Timestamped{
     private String password;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "schedule_id", nullable = false)
     private Schedule schedule; // 어떤 일정에 달린 댓글인지
 
     public Comment(CommentRequestDto requestDto, Schedule schedule) {

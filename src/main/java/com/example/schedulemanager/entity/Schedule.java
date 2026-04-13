@@ -7,6 +7,8 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -50,4 +52,7 @@ public class Schedule {
         this.author = author;
     }
 
+    // 일정 하나에 여러 댓글 달기
+    @OneToMany(mappedBy = "schedule", cascade = CascadeType.REMOVE)
+    private List<Comment> comments = new ArrayList<>();
 }
