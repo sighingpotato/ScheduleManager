@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/schedules")
 @RequiredArgsConstructor
 public class ScheduleController {
 
@@ -32,7 +33,7 @@ public class ScheduleController {
     }
 
     // 선택 일정 조회
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<ScheduleResponseDto> getSchedule(@PathVariable Long id) {
         ScheduleResponseDto response = scheduleService.getSchedule(id);
         return ResponseEntity.status(HttpStatus.OK).body(response);
